@@ -22,6 +22,9 @@
 \usepackage{listings}
 \usepackage{titlesec}
 
+\usepackage{amsthm}
+\usepackage[inline]{enumitem}
+
 % reduces section spacing
 \titlespacing\section{0pt}{3pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsection{0pt}{2pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
@@ -59,6 +62,11 @@
 
 \setlength{\columnsep}{20pt}
 \raggedcolumns
+
+% custom environments
+\newtheoremstyle{compact_definition}{}{}{\normalfont}{}{\bfseries}{}{0em}{\thmnote{#3}: }
+\theoremstyle{compact_definition}
+\newtheorem*{definition}{Definition}
 
 % _____ CUSTOM COMMANDS __________________________________________
 \newcommand{\E}[0]{\mathbb{E}}
