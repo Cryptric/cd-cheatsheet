@@ -24,10 +24,16 @@
 
 \usepackage{amsthm}
 \usepackage[inline]{enumitem}
+\usepackage{mdframed}
 
 % reduces section spacing
 \titlespacing\section{0pt}{3pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsection{0pt}{2pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\definecolor{accent}{HTML}{272744}
+\definecolor{H1}{HTML}{8b6d9c}
+\definecolor{H2}{HTML}{f2d3ab}
+\definecolor{H3}{HTML}{494d7e}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -68,6 +74,28 @@
 \theoremstyle{compact_definition}
 \newtheorem*{definition}{Definition}
 
+% Colored boxes for algorithms
+\mdfdefinestyle{mdalgorithm}{
+  hidealllines=true,
+  innertopmargin=2pt,
+  innerbottommargin=2pt,
+  innerrightmargin=2pt,
+  innerleftmargin=2pt,
+  leftmargin=0pt,
+  rightmargin=0pt,
+  frametitleaboveskip=2pt,
+  frametitlebelowskip=2pt,
+  theoremseparator={},
+  theoremspace={},
+  skipabove=2pt,
+  skipbelow=2pt,
+  backgroundcolor=H1!30,
+}
+
+\newenvironment{algorithm}%
+    {\begin{mdframed}[style=mdalgorithm]\begin{definition}}%
+    {\end{definition}\end{mdframed}}
+
 % _____ CUSTOM COMMANDS __________________________________________
 \newcommand{\E}[0]{\mathbb{E}}
 \newcommand{\R}[0]{\mathbb{R}}
@@ -76,6 +104,8 @@
 
 \newcommand{\argmin}[1]{\underset{#1}{\text{argmin}}}
 \newcommand{\argmax}[1]{\underset{#1}{\text{argmax}}}
+
+\renewcommand{\L}{\mathcal{L}}
 
 \begin{document}
 \begin{multicols*}{3}

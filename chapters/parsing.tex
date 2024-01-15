@@ -131,7 +131,21 @@ An LR(0) machine only works if states with reduce actions have a single reduce a
 
 In LR(1), each item is an LR(0) item plus a set of look-ahead symbols $A \to \alpha . \beta, \; \mathcal L$.\medskip
 
-To form the LR(1) closure, we first do the same as for LR(0). Additionally for each item $C \to . \gamma$ we add due to a rule $A \to \beta . C \gamma, \; \mathcal L$, we compute its look-ahead set $\mathcal M$ including FIRST($\gamma$) and if $\gamma$ can derive $\epsilon$ also $\mathcal L$. \medskip
+% To form the LR(1) closure, we first do the same as for LR(0). Additionally for each item $C \to . \gamma$ we add due to a rule $A \to \beta . C \gamma, \; \mathcal L$, we compute its look-ahead set $\mathcal M$ including FIRST($\gamma$) and if $\gamma$ can derive $\epsilon$ also $\mathcal L$. \medskip
+\begin{algorithm}[LR(1) State closure] Move dot, copy $\L$, apply algorithm
+   \begin{itemize}
+       \item For each item $A \to B.C\delta, \L$
+        \begin{itemize}
+            \item[$\bullet$] For each token $b \in \operatorname{First}(\delta \L)$
+            \begin{itemize}
+                \item[$\bullet$] For each production $C \to \gamma$ in Grammar
+                \begin{itemize}
+                    \item[$\bullet$] Add $C \to .\gamma b$ to $S$
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+   \end{itemize}
+\end{algorithm}
 
 \vspace{-15pt}
 \begin{center}
