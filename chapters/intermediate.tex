@@ -10,6 +10,6 @@ Multiple IR's: get program closer to machine code without losing the information
 		
 Good IR: Easy translation target, easy to translate, narrow interface (fewer constructs means simpler phases / optimizations).\medskip
 	
-Basic Blocks are a sequence of instructions that are always executed from the first to last instruction. They start with a label and end with a control-flow instruction (no other control-low instruction or label).\medskip
+Basic Blocks are a sequence of instructions that are always executed from the first to last instruction. They start with a label and end with a control-flow instruction (expect \texttt{call}, as control flow is guaranteed to return) (no other control-low instruction or label).\medskip
 	
 Basic blocks can be arranged into a control-flow graph (CFG): Nodes are basic blocks - directed edges represent potential jumps.

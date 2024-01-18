@@ -26,6 +26,13 @@ Condition Codes:
 
 Instructions: \texttt{INSTR} \texttt{SRC} \texttt{DEST} (AT\&T syntax), prefix register with \% and immediate values with \$. Note that \texttt{subq} is \texttt{DEST - SRC}.\medskip
 
+\begin{itemize*}
+    \item \textbf{q}uadword: 4 words
+    \item \textbf{l}ong: 2 words
+    \item \textbf{w}ord: 16 bits
+    \item \textbf{b}yte: 8 bits
+\end{itemize*}
+
 Operands:
 \begin{compactitem}[$\quad\bullet$]
 	\item \texttt{Imm}: 64-bit literal signed integer
@@ -50,7 +57,7 @@ Calling Conventions
 
 	\item Callee Save - must be restored by the called code (\texttt{rbp, rsp, rbx, r12-15}).
 
-	\item Arguments: In \texttt{rdi, rsi, rdx, rcx, r08, r09} and starting with $n = 7$ in $(n-7) + 2) * 8 + \texttt{rbp}$
+	\item Arguments: In \texttt{rdi, rsi, rdx, rcx, r08, r09} and starting with $n = 7$ in $((n-7) + 2) * 8 + \texttt{rbp}$
 
 	\item Return value in \texttt{rax}.
 

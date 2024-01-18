@@ -5,3 +5,19 @@ Lexing is the process of taking the source code as an input and producing a toke
 One way of implementing a lexer is, using regular expressions. Regex rules precisely describe a sets of strings. But regex alone can be ambiguous if we have multiple matching rules. Most languages therefore choose the longest match or have another specified order. \medskip
 
 Regex can be implemented by forming an NFA and then transforming it to a DFA.
+
+\textbf{Summary Lexer Generator Behavior}
+\begin{enumerate}
+    \item Take each regular expression $R_i$ and its action $A_i$
+    \item Compute the NFA formed by $(R_1 \mid R_2 \mid \cdots \mid R_n)$
+    \item Compute the DFA for the big NFA computed in the previous step
+    \item Compute the minimal equivalent DFA
+    \item Produce the transition table
+    \item Implement the longest match
+    \begin{enumerate}
+        \item Start from the initial state
+        \item Follow transitions, remember the last accepted state entered
+        \item Accept the input until no transition is possible
+        \item Perform the highest-priority action associated with the last accepted state
+    \end{enumerate}
+\end{enumerate}
