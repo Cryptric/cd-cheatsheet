@@ -73,6 +73,17 @@ For a given production $A \to \gamma$:
 	\item Construct the \textbf{follow set} of $A$, this set contains all terminals that can appear immediately to the right of the given nonterminal. If $\epsilon$ is derivable by the production, add the corresponding production to the table.
 \end{compactitem}
 
+\begin{algorithm}[FOLLOW Set] $\operatorname{FOLLOW}(B)$
+\begin{itemize}
+    \item For all productions $A \to \alpha B \gamma$, where $\alpha$ and $\gamma$ are arbitrary expressions (might be $\epsilon$)
+    \begin{itemize}
+        \item[$\bullet$] If $\epsilon \not \in \operatorname{FIRST}(\gamma)$, then $\operatorname{FOLLOW}(B)$ includes all of $\operatorname{FIRST}(\gamma)$
+        \item[$\bullet$] If $\epsilon \in \operatorname{FIRST}(\gamma)$, then $\operatorname{FOLLOW}(B)$ includes $(\operatorname{FIRST}(\gamma) \setminus \{ \epsilon \} ) \cup \operatorname{FOLLOW}(A)$
+    \end{itemize}
+\end{itemize}
+    
+\end{algorithm}
+
 \begin{center}
 	\includegraphics[width=\linewidth]{assets/ll1.png}
 \end{center}
