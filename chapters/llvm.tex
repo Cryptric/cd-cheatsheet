@@ -1,10 +1,31 @@
 \section*{LLVM (Low Level Virtual Machine)}
 
-Storage Types: local variable \texttt{\%uid}, global variable \texttt{@gid}, abstract locations (stack-allocated with \texttt{alloca}), heap-allocated structures (\texttt{malloc}).\medskip
+\textbf{Storage Types}: local variable \texttt{\%uid}, global variable \texttt{@gid}, abstract locations (stack-allocated with \texttt{alloca}), heap-allocated structures (\texttt{malloc}).\medskip
 
 Each \texttt{\%uid} appears on the left-hand side of an assignment only once in the entire control flow graph (SSA).\medskip
 
 The entry block of the CFG does not have to be labeled, the last instruction of a block is called the terminator. \medskip
+
+\textbf{Datatypes:}
+\begin{compactitem}
+\item $<elts>$ is an integer constant $\geq 0$
+\item Structure types can be named at the top level: such structure types can be recursive
+\end{compactitem}
+\begin{lstlisting}
+t ::=
+    void
+    i1 | i8 | i64 # N-bit integers
+    [<elts> x t] # arrays
+    fty # function types
+    {t1, t2, ..., tn} # structures
+    t* # pointers
+    %Tident # named types
+    
+fty ::= # function types
+    t (t1, ..., tn) # return, argument types
+
+%T1 = type {t1, t2, ..., tn} # named type
+\end{lstlisting} \medskip
 
 \textbf{Example Program:}
 \begin{lstlisting}
@@ -25,7 +46,11 @@ else:
 	store i64 %sum, i64* %b 
 	ret i64 %sum
 }
-\end{lstlisting}
+\end{lstlisting} \medskip
+
+\texttt{nsw}: informs the compiler, that the operation before the \texttt{nsw}, will not cause a signed overflow
+
+\textbf{SSA}: every variable can only be once on the left-hand side of an assignment and is immutable (unchangeable) after that assignment. If a variable has multiple assignments in the original code, it gets split into different "versions", each with a unique name when converted to the \textbf{SSA}-form.
 
 \subsection*{GEP}
 

@@ -6,12 +6,12 @@ The stack grows from high addresses to low addresses, \texttt{rsp} points to the
 
 The stack sits at the top of memory space, at the bottom we have code and data followed by the heap.\medskip
 
-Register: (6 args, 1 ret, ... ({\color{orange}caller saved, \color{blue} callee saved}))
+\textbf{Register}: (6 args, 1 ret, ... ({\color{orange}caller saved, \color{blue} callee saved}))
 \texttt{\color{orange} rdi, rsi, rdx, rcx, r08, r09, rax, \color{blue} rbx, rsp, rbp, \color{black} rip, \color{orange} r10, r11, \color{blue} r12-r15}\medskip
 
-Flags: \texttt{OF} overflow/underflow, \texttt{SF} sign (1 = negative), \texttt{ZF} zero \medskip
+\textbf{Flags}: \texttt{OF} overflow/underflow, \texttt{SF} sign (1 = negative), \texttt{ZF} zero \medskip
 
-Condition Codes:
+\textbf{Condition Codes}:
 \begin{center}
 	\begin{tabular}{l l}
 		\textbf{Code}         & \textbf{Condition}                            \\
@@ -24,16 +24,26 @@ Condition Codes:
 	\end{tabular}
 \end{center}
 
-Instructions: \texttt{INSTR} \texttt{SRC} \texttt{DEST} (AT\&T syntax), prefix register with \% and immediate values with \$. Note that \texttt{subq} is \texttt{DEST - SRC}.\medskip
+\textbf{Conditional Instructions}:
+\begin{center}
+	\begin{tabular}{l l}
+		\textbf{Instruction}         & \textbf{Description}                            \\
+		\texttt{cmpq SRC2, SRC1}          & \texttt{SRC1} - \texttt{SRC2}, set condition flags             \\
+        \texttt{setbCC DEST}          & \texttt{DEST}'s lower byte $\leftarrow$ \texttt{if CC then 1 else 0}          \\
+        \texttt{jCC SRC}          & \texttt{rip} $\leftarrow$ \texttt{if CC then SRC else fallthrough}             \\
+	\end{tabular}
+\end{center}
+
+\textbf{Instructions}: \texttt{INSTR} \texttt{SRC} \texttt{DEST} (AT\&T syntax), prefix register with \% and immediate values with \$. Note that \texttt{subq} is \texttt{DEST - SRC}.\medskip
 
 \begin{itemize*}
     \item \textbf{q}uadword: 4 words
     \item \textbf{l}ong: 2 words
     \item \textbf{w}ord: 16 bits
     \item \textbf{b}yte: 8 bits
-\end{itemize*}
+\end{itemize*} \medskip
 
-Operands:
+\textbf{Operands}:
 \begin{compactitem}[$\quad\bullet$]
 	\item \texttt{Imm}: 64-bit literal signed integer
 	\item \texttt{Lbl}: label representing a machine address
@@ -47,7 +57,7 @@ Thus, \texttt{\%rax} refers to the contents of the register, while \texttt{(\%ra
 
 x86 assembly is organized into labeled blocks, indicating code locations used by jumps, etc. Program begins execution at designated label (\texttt{main}).\medskip
 
-Calling Conventions
+\textbf{Calling Conventions}
 \begin{compactitem}[$\quad\bullet$]
 	\item Setup Stack Frame: \texttt{pushq \%rbp} \quad \texttt{movq \%rsp, \%rbp}
 

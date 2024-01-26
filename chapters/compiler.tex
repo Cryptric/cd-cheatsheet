@@ -16,3 +16,18 @@ The first two steps are the frontend and machine independent, the last step is t
       \item Missed optimizations
   \end{itemize*}
 \end{definition}
+
+\textbf{Compiler Stages}:
+  \begin{compactitem}
+    \item Lexing $\rightarrow$ token stream
+    \item Parsing $\rightarrow$ abstract syntax
+    \item Disambiguation $\rightarrow$ abstract syntax
+    \item Semantic analysis $\rightarrow$ annotated abstract syntax
+    \item Translation $\rightarrow$ intermediate code
+    \item Control-flow analysis $\rightarrow$ control-flow graph
+    \item Data-flow analysis $\rightarrow$ interference graph
+    \item Register allocation $\rightarrow$ assembly
+    \item Code emission
+    \item \textbf{Optimization} may be done at many of these stages!
+  \end{compactitem}
+  
